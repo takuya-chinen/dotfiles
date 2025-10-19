@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=/usr/local/bin:$PATH
 #################################  HISTORY  #################################
@@ -7,7 +14,7 @@ HISTSIZE=100000                 # メモリ上に保存する履歴のサイズ
 SAVEHIST=1000000                # 上述のファイルに保存する履歴のサイズ
 
 # highlight_color
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
 # share .zshhistory
 setopt inc_append_history       # 実行時に履歴をファイルにに追加していく
@@ -17,6 +24,15 @@ setopt hist_ignore_all_dups     # ヒストリーに重複を表示しない
 setopt hist_save_no_dups        # 重複するコマンドが保存されるとき、古い方を削除する。
 setopt extended_history         # コマンドのタイムスタンプをHISTFILEに記録する
 setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場合は、最初に重複を削除します
+
+## コマンド履歴検索
+function peco-history-selection() {
+  BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 
 # enable completion
 autoload -Uz compinit; compinit
@@ -81,16 +97,13 @@ select-word-style bash
 WORDCHARS='.-'
 
 # lsコマンドのalias関連
-alias ls='ls --color=auto -G'
+alias ls='gls --color=auto'
 alias la='ls -lAG'
 alias ll='ls -lG'
 
 # clearコマンドのalias関連
 alias c='clear'
 alias cc='c &&'
-
-# neovimのalias関連
-alias v='nvim'
 
 # >>> zsh-completions setting >>>
 
@@ -150,16 +163,6 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light zdharma/history-search-multi-word
 zinit light chrissicool/zsh-256color
 
-# oh-my-zshのセットアップ
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit cdclear -q
-
-# プロンプトのカスタマイズ
-zinit snippet OMZL::theme-and-appearance.zsh
-zinit snippet OMZL::spectrum.zsh
-zinit snippet OMZT::candy
-
 zinit light supercrabtree/k
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -172,3 +175,9 @@ case ":$PATH:" in
 esac
 # pnpm enid
 export PATH="$HOME/bin:$PATH"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
