@@ -97,13 +97,16 @@ select-word-style bash
 WORDCHARS='.-'
 
 # lsコマンドのalias関連
-alias ls='gls --color=auto'
+alias ls='eza --icons --group-directories-first'
 alias la='ls -lAG'
 alias ll='ls -lG'
 
 # clearコマンドのalias関連
 alias c='clear'
 alias cc='c &&'
+
+# catコマンドのalias関連
+alias cat='bat --paging=never'
 
 # >>> zsh-completions setting >>>
 
@@ -177,7 +180,13 @@ esac
 export PATH="$HOME/bin:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
+# ASCIIアート名言関連設定
+if [[ $- == *i* ]]; then
+  fortune | cowsay -f tux | lolcat
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
