@@ -181,12 +181,15 @@ export PATH="$HOME/bin:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # ASCIIアート名言関連設定
-if [[ $- == *i* ]]; then
-  fortune | cowsay -f tux | lolcat
-fi
-
+# if [[ $- == *i* ]]; then
+#   fortune | cowsay -f tux | lolcat
+# fi
+#
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# Added by Antigravity
+export PATH="/Users/tutaya/.antigravity/antigravity/bin:$PATH"
