@@ -1,9 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=/usr/local/bin:$PATH
@@ -178,18 +175,17 @@ case ":$PATH:" in
 esac
 # pnpm enid
 export PATH="$HOME/bin:$PATH"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# ASCIIアート名言関連設定
-# if [[ $- == *i* ]]; then
-#   fortune | cowsay -f tux | lolcat
-# fi
-#
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 # Added by Antigravity
 export PATH="/Users/tutaya/.antigravity/antigravity/bin:$PATH"
+
+# コマンドが存在するか確認する関数
+_has() {
+  type "$1" > /dev/null 2>&1
+}
+
+## starship prompt
+if _has starship; then
+  eval "$(starship init zsh)"
+fi
+
