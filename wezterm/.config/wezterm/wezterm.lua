@@ -5,6 +5,9 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 config.automatically_reload_config = true
 
+-- 日本語をいい感じにするフォント
+config.font = wezterm.font("Firge35Nerd Console")
+
 -- フォントサイズ
 config.font_size = 12.0
 
