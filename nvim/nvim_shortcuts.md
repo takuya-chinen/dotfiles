@@ -54,14 +54,45 @@
 
 ---
 
-## Git 差分 & 履歴 (`Diffview.nvim`)
+## Git 関連 (`Diffview.nvim` / `gitsigns.nvim`)
+
+### 履歴 & 差分 (`Diffview.nvim`)
 
 | キー | 説明 |
 | --- | --- |
 | `<Leader>hh` | 1つ前のコミット (HEAD~1) との差分を表示 |
 | `<Leader>hf` | 現在のファイルの変更履歴を表示 |
 | `<Leader>hc` | Diffviewを閉じる |
-| `<Leader>hd` | コンフリクト解消画面を表示 |
+| `<Leader>hd` | 現在の変更の差分を表示 |
+
+### ハンク操作 (`gitsigns.nvim`)
+
+| キー | 説明 |
+| --- | --- |
+| `]c` | 次の変更 (hunk) へ移動 |
+| `[c` | 前の変更 (hunk) へ移動 |
+| `<Leader>hs` | 現在の変更をステージ (Stage hunk) |
+| `<Leader>hr` | 現在の変更をリセット (Reset hunk) |
+| `<Leader>hp` | 変更をプレビュー |
+| `<Leader>hb` | 現在の行のBlameを表示 |
+| `<Leader>tb` | 行毎のBlame表示を切り替え (Toggle line blame) |
+
+---
+
+## Markdown 管理 (`mkdnflow.nvim` / `markview.nvim`)
+
+| キー | モード | 説明 |
+| --- | --- | --- |
+| `<CR>` (Enter) | Normal/Insert/Visual | リンク移動 / リスト・チェックボックス継続 / テーブル行移動 |
+| `<BS>` (Backspace) | Normal | リンク履歴を戻る |
+| `<Del>` | Normal | リンク履歴を進む |
+| `<Tab>` | Normal | 次のリンクへ移動 |
+| `<S-Tab>` | Normal | 前のリンクへ移動 |
+| `n` | Normal | 次の見出しへ移動 |
+| `p` | Normal | 前の見出しへ移動 |
+| `+` | Normal | 番号付きリストの番号を更新 |
+| `<leader>X` | Normal/Visual | チェックボックスのトグル ( [ ] <-> [x] ) |
+| `<leader>nn` | Normal | 新しいリスト項目を作成 |
 
 ---
 
