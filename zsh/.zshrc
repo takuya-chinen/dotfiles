@@ -93,18 +93,6 @@ autoload -Uz select-word-style
 select-word-style bash
 WORDCHARS='.-'
 
-# lsコマンドのalias関連
-alias ls='eza --icons --group-directories-first'
-alias la='ls -lAG'
-alias ll='ls -lG'
-
-# clearコマンドのalias関連
-alias c='clear'
-alias cc='c &&'
-
-# catコマンドのalias関連
-alias cat='bat --paging=never'
-
 # >>> zsh-completions setting >>>
 
 if type brew &>/dev/null; then
@@ -131,11 +119,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Sheldonで管理しているプラグインを読み込む
-if _has sheldon; then
-  eval "$(sheldon source)"
-fi
-
+# nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # pnpm
@@ -158,4 +142,13 @@ _has() {
 ## starship prompt
 if _has starship; then
   eval "$(starship init zsh)"
+fi
+
+# Sheldonで管理しているプラグインを読み込む
+if _has sheldon; then
+  eval "$(sheldon source)"
+fi
+
+if [ -f "$HOME/dotfiles/zsh/aliases.zsh" ]; then
+  source "$HOME/dotfiles/zsh/aliases.zsh"
 fi

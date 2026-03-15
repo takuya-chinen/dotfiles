@@ -36,3 +36,12 @@ github = "chrissicool/zsh-256color"
 # ディレクトリ一覧表示の拡張
 [plugins.k]
 github = "supercrabtree/k"
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+
+# dockerサブコマンド補完
+# [plugins.docker-completion]
+# local = "~/.config/zsh/completions"
+# # インストール（または更新）時に実行されるコマンド
+# hooks.post_checkout = "docker completion zsh > ~/.config/zsh/completions/_docker"
