@@ -12,3 +12,6 @@ abbr cat='bat --paging=never'
 
 # nvim
 abbr v='nvim'
+
+# lazygit
+abbr lg='lazygit'
