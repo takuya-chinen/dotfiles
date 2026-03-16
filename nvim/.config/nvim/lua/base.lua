@@ -1,5 +1,6 @@
 vim.o.encoding = 'utf-8'
 vim.o.number = true
+vim.o.relativenumber = true
 
 vim.o.smartindent = true
 vim.o.clipboard = "unnamedplus"
@@ -16,3 +17,5 @@ vim.o.showmatch = true
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = "\\"
+
+vim.o.cursorline = true

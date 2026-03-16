@@ -13,6 +13,7 @@ map('n', '<Leader>v', ':vs\n', { noremap = true, desc = 'Split window vertically
 map('n', '<Leader>w', ':w\n', { noremap = true, desc = 'Save file' })
 map('n', '<Leader>q', ':q\n', { noremap = true, desc = 'Quit window' })
 map('n', '<Leader>wq', ':wq\n', { noremap = true, desc = 'Save and Quit' })
+map('n', '<Leader>x', ':bd<CR>', { noremap = true, silent = true, desc = 'Close current buffer' })
 
 -- open terminal
 map('n', '<Leader>tt', ':terminal\n', { noremap = true, desc = 'Open terminal' })
@@ -25,7 +26,7 @@ map('i', '<C-l>', '<Right>', { desc = 'Move right' })
 -- show diagnostics
 map('n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, desc = 'Show line diagnostics' })
 
--- rebind embeded command
+-- rebind embedded command
 map('n', '<C-_>', 'gcc', { noremap = false, desc = 'Toggle comment' })
 map('v', '<C-_>', 'gc', { noremap = false, desc = 'Toggle comment' })
 
@@ -35,3 +36,6 @@ map("i", "kk", "<esc>", { noremap = true, desc = 'Back to normal mode' })
 -- ファイル切り替え
 map("n", "<C-h>", "<cmd>bprev<CR>", { desc = 'Previous buffer' })
 map("n", "<C-l>", "<cmd>bnext<CR>", { desc = 'Next buffer' })
+
+-- oil.nvim_set_keymap
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory with oil.nvim" })
