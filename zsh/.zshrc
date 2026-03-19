@@ -153,3 +153,4 @@ fi
 if [ -f "$HOME/dotfiles/zsh/aliases.zsh" ]; then
   source "$HOME/dotfiles/zsh/aliases.zsh"
 fi
+export PATH="$HOME/.cargo/bin:$PATH"
