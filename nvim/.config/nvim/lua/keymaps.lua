@@ -31,11 +31,11 @@ map('n', '<C-_>', 'gcc', { noremap = false, desc = 'Toggle comment' })
 map('v', '<C-_>', 'gc', { noremap = false, desc = 'Toggle comment' })
 
 -- normal mode
-map("i", "kk", "<esc>", { noremap = true, desc = 'Back to normal mode' })
+map("i", "jj", "<esc>", { noremap = true, desc = 'Back to normal mode' })
 
 -- ファイル切り替え
 map("n", "<C-h>", "<cmd>bprev<CR>", { desc = 'Previous buffer' })
 map("n", "<C-l>", "<cmd>bnext<CR>", { desc = 'Next buffer' })
 
 -- oil.nvim_set_keymap
-map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory with oil.nvim" })
+map("n", "<Leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory with oil.nvim" })
