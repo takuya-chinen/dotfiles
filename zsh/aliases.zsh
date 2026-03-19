@@ -13,5 +13,11 @@ abbr cat='bat --paging=never'
 # nvim
 abbr v='nvim'
 
+# google search
+function google() {
+  local query=$(echo "$@" | sed 's/ /+/g')
+  open "https://www.google.com/search?q=${query}"
+}
+
 # lazygit
 abbr lg='lazygit'
