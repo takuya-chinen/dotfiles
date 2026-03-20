@@ -21,3 +21,6 @@ function google() {
 
 # lazygit
 abbr lg='lazygit'
+
+# pnpm
+abbr pd='pnpm dev'
