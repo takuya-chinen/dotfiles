@@ -154,3 +154,7 @@ if [ -f "$HOME/dotfiles/zsh/aliases.zsh" ]; then
   source "$HOME/dotfiles/zsh/aliases.zsh"
 fi
 export PATH="$HOME/.cargo/bin:$PATH"
+
+cd ~/login_bonus_for_shell
+python ~/login_bonus_for_shell/logger.py
+cd ~/
