@@ -155,6 +155,9 @@ if [ -f "$HOME/dotfiles/zsh/aliases.zsh" ]; then
 fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
-cd ~/login_bonus_for_shell
-python ~/login_bonus_for_shell/logger.py
-cd ~/
+# ログインボーナスの実行
+# Neovim内蔵ターミナルの場合はディレクトリ移動を避ける、
+# またはサブシェル ( ) を使って元のディレクトリを保持する
+if [[ -z "$NVIM" ]]; then
+  (cd ~/login_bonus_for_shell && python logger.py)
+fi
