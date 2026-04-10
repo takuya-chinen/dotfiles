@@ -5,6 +5,7 @@
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=/usr/local/bin:$PATH
 export ABBR_QUIET=1
+export EDITOR="nvim"
 #################################  HISTORY  #################################
 # history
 HISTFILE=$HOME/.zsh_history     # 履歴を保存するファイル
