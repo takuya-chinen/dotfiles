@@ -26,8 +26,34 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         -- <C-n>: down, <C-p>: up
-        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Insert })
+          elseif vim.bo.filetype == "markdown" then
+            local line = vim.api.nvim_get_current_line()
+            if line:match("^%s*[%-%*%+]%s*$") or line:match("^%s*%d+%.%s*$") then
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-t>", true, false, true), "n", true)
+            else
+              fallback()
+            end
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert })
+          elseif vim.bo.filetype == "markdown" then
+            local line = vim.api.nvim_get_current_line()
+            if line:match("^%s*[%-%*%+]%s*$") or line:match("^%s*%d+%.%s*$") then
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, false, true), "n", true)
+            else
+              fallback()
+            end
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-l>"] = cmp.mapping.complete(),
